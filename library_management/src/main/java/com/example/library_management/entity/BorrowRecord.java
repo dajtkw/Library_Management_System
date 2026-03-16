@@ -8,14 +8,12 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "borrow_records")
+@EntityListeners(org.springframework.data.jpa.domain.support.AuditingEntityListener.class)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BorrowRecord {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class BorrowRecord extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -37,26 +35,18 @@ public class BorrowRecord {
     @Column(nullable = false, length = 20)
     private String status = "BORROWED";
 
-    @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    // @PrePersist
+    // protected void onCreate() {
+    //     createdAt = LocalDateTime.now();
+    //     updatedAt = LocalDateTime.now();
+    //     if (borrowDate == null) {
+    //         borrowDate = LocalDateTime.now();
+    //     }
+    // }
 
-    @LastModifiedDate
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
-        if (borrowDate == null) {
-            borrowDate = LocalDateTime.now();
-        }
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
+    // @PreUpdate
+    // protected void onUpdate() {
+    //     updatedAt = LocalDateTime.now();
+    // }
 
 }
