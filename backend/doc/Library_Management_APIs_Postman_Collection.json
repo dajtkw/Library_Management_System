@@ -1,0 +1,482 @@
+{
+  "info": {
+    "name": "Library Management System APIs",
+    "_postman_id": "library-management-system",
+    "description": "Complete API collection for Library Management System - Books, Users, and Borrow management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/v1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "📚 Book APIs",
+      "item": [
+        {
+          "name": "Get All Books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/books",
+              "host": ["{{baseUrl}}"],
+              "path": ["books"]
+            },
+            "description": "Retrieve all books from the library"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Book by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/books/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["books", "1"]
+            },
+            "description": "Retrieve a specific book by its ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Spring Boot in Action\",\n  \"author\": \"Craig Walls\",\n  \"isbn\": \"978-1617292545\",\n  \"quantity\": 5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/books",
+              "host": ["{{baseUrl}}"],
+              "path": ["books"]
+            },
+            "description": "Create a new book in the library"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Book Quantity",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 10\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/books/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["books", "1"]
+            },
+            "description": "Update the quantity of a specific book"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Book",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/books/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["books", "1"]
+            },
+            "description": "Delete a book from the library"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "👤 User APIs",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            },
+            "description": "Retrieve all users from the system"
+          },
+          "response": []
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "1"]
+            },
+            "description": "Retrieve a specific user by their ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"john_doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"fullName\": \"John Doe\",\n  \"role\": \"ROLE_USER\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            },
+            "description": "Create a new user in the system"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Admin User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"email\": \"admin@library.com\",\n  \"password\": \"admin123\",\n  \"fullName\": \"Library Admin\",\n  \"role\": \"ROLE_ADMIN\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            },
+            "description": "Create a new admin user"
+          },
+          "response": []
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"updated@example.com\",\n  \"fullName\": \"Updated Name\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "1"]
+            },
+            "description": "Update user information"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "1"]
+            },
+            "description": "Delete a user from the system"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📖 Borrow APIs",
+      "item": [
+        {
+          "name": "Borrow a Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"bookId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/borrow",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow"]
+            },
+            "description": "Borrow a book for a user"
+          },
+          "response": []
+        },
+        {
+          "name": "Return a Book",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/borrow/1/return",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow", "1", "return"]
+            },
+            "description": "Return a borrowed book"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Borrow Records",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/borrow",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow"]
+            },
+            "description": "Retrieve all borrow records"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Borrow Record by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/borrow/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow", "1"]
+            },
+            "description": "Retrieve a specific borrow record"
+          },
+          "response": []
+        },
+        {
+          "name": "Get User's Borrow History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/borrow/user/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow", "user", "1"]
+            },
+            "description": "Get all borrow records for a user"
+          },
+          "response": []
+        },
+        {
+          "name": "Get User's Active Borrows",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/borrow/user/1/active",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow", "user", "1", "active"]
+            },
+            "description": "Get active (not returned) borrow records for a user"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Book's Borrow History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/borrow/book/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow", "book", "1"]
+            },
+            "description": "Get all borrow records for a book"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Overdue Records",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/borrow/overdue",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow", "overdue"]
+            },
+            "description": "Get all overdue borrow records"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Active Borrow Count",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/borrow/stats/active-count",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow", "stats", "active-count"]
+            },
+            "description": "Get count of active borrow records"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🔄 Complete Workflow",
+      "item": [
+        {
+          "name": "Step 1: Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\",\n  \"fullName\": \"Test User\",\n  \"role\": \"ROLE_USER\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            },
+            "description": "Create a test user"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 2: Create Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Test Book\",\n  \"author\": \"Test Author\",\n  \"isbn\": \"123-456-789\",\n  \"quantity\": 5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/books",
+              "host": ["{{baseUrl}}"],
+              "path": ["books"]
+            },
+            "description": "Create a test book"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 3: Borrow Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"bookId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/borrow",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow"]
+            },
+            "description": "Borrow the book"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 4: Check Active Borrows",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/borrow/user/1/active",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow", "user", "1", "active"]
+            },
+            "description": "Check user's active borrows"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 5: Return Book",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/borrow/1/return",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow", "1", "return"]
+            },
+            "description": "Return the borrowed book"
+          },
+          "response": []
+        },
+        {
+          "name": "Step 6: Verify Return",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/borrow/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["borrow", "1"]
+            },
+            "description": "Verify the book has been returned"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
